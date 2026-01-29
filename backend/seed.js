@@ -3,38 +3,26 @@ const Measurement = require("./models/Measurement");
 
 mongoose.connect("mongodb://127.0.0.1:27017/analytics");
 
-const data = [
-  {
-    timestamp: new Date("2025-01-01T10:00:00"),
-    field1: 22.5,
-    field2: 60,
-    field3: 400
-  },
-  {
-    timestamp: new Date("2025-01-01T11:00:00"),
-    field1: 23.1,
-    field2: 58,
-    field3: 420
-  },
-  {
-    timestamp: new Date("2025-01-01T12:00:00"),
-    field1: 21.9,
-    field2: 65,
-    field3: 390
-  },
-  {
-    timestamp: new Date("2025-01-01T13:00:00"),
-    field1: 24.0,
-    field2: 55,
-    field3: 450
-  }
-];
+const data = [];
+const startDate = new Date("2025-01-01");
+
+for (let i = 0; i < 20; i++) {
+  const date = new Date(startDate);
+  date.setDate(startDate.getDate() + i);
+
+  data.push({
+    timestamp: date,
+    field1: 20 + Math.random() * 5,   // temperature
+    field2: 50 + Math.random() * 15,  // humidity
+    field3: 380 + Math.random() * 100 // CO2
+  });
+}
 
 async function seed() {
   try {
     await Measurement.deleteMany({});
     await Measurement.insertMany(data);
-    console.log("Test data inserted");
+    console.log("Daily test data inserted");
     mongoose.connection.close();
   } catch (err) {
     console.error(err);
