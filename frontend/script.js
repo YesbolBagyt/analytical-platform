@@ -15,7 +15,6 @@ async function loadData() {
     const response = await fetch(url);
     const data = await response.json();
 
-    // 🔴 НЕТ ДАННЫХ (пустой массив)
     if (!Array.isArray(data) || data.length === 0) {
       if (chart) {
         chart.destroy();
