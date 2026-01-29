@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Measurement = require("../models/Measurement");
 
-/**
- * GET /api/measurements
- * ?field=field1&start_date=YYYY-MM-DD&end_date=YYYY-MM-DD
- */
 router.get("/", async (req, res) => {
   try {
     const { field, start_date, end_date } = req.query;
@@ -41,10 +37,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-/**
- * GET /api/measurements/metrics
- * ?field=field1
- */
 router.get("/metrics", async (req, res) => {
   try {
     const { field } = req.query;

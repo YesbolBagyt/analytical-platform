@@ -12,9 +12,9 @@ for (let i = 0; i < 20; i++) {
 
   data.push({
     timestamp: date,
-    field1: 20 + Math.random() * 5,   // temperature
-    field2: 50 + Math.random() * 15,  // humidity
-    field3: 380 + Math.random() * 100 // CO2
+    field1: 20 + Math.random() * 5,  
+    field2: 50 + Math.random() * 15, 
+    field3: 380 + Math.random() * 100 
   });
 }
 
